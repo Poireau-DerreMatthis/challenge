@@ -1,0 +1,99 @@
+CREATE TABLE Users(
+   ID COUNTER,
+   email VARCHAR(320) NOT NULL,
+   password VARCHAR(255) NOT NULL,
+   first_name VARCHAR(150) NOT NULL,
+   last_name VARCHAR(150) NOT NULL,
+   created_at DATETIME NOT NULL,
+   updated_at DATETIME NOT NULL,
+   token VARCHAR(64) NOT NULL,
+   status VARCHAR(50) NOT NULL,
+   is_deleted LOGICAL,
+   PRIMARY KEY(ID)
+);
+
+CREATE TABLE Posts(
+   ID BIGINT,
+   guid TEXT NOT NULL,
+   title VARCHAR(100),
+   status LOGICAL NOT NULL,
+   created_at DATETIME NOT NULL,
+   updated_at DATETIME NOT NULL,
+   content TEXT NOT NULL,
+   _user_id INT,
+   post_meta VARCHAR(50),
+   PRIMARY KEY(ID)
+);
+
+CREATE TABLE Comments(
+   ID COUNTER,
+   created_date DATETIME NOT NULL,
+   updated_at DATETIME NOT NULL,
+   status LOGICAL NOT NULL,
+   content TEXT NOT NULL,
+   comment_meta VARCHAR(50),
+   _user_id VARCHAR(150) NOT NULL,
+   PRIMARY KEY(ID)
+);
+
+CREATE TABLE Options(
+   ID COUNTER,
+   name VARCHAR(255) NOT NULL,
+   option_value VARCHAR(255) NOT NULL,
+   PRIMARY KEY(ID)
+);
+
+CREATE TABLE Role(
+   ID COUNTER,
+   name VARCHAR(25) NOT NULL,
+   created_at DATETIME,
+   updated_at DATETIME,
+   ID_1 INT,
+   PRIMARY KEY(ID),
+   UNIQUE(ID_1),
+   FOREIGN KEY(ID_1) REFERENCES Users(ID)
+);
+
+CREATE TABLE Medias(
+   ID COUNTER,
+   title VARCHAR(50) NOT NULL,
+   created_at DATETIME NOT NULL,
+   updated_at DATETIME NOT NULL,
+   guid VARCHAR(255),
+   status LOGICAL,
+   media_meta VARCHAR(50),
+   _user_id VARCHAR(50),
+   PRIMARY KEY(ID)
+);
+
+CREATE TABLE publier(
+   ID INT,
+   ID_1 BIGINT,
+   PRIMARY KEY(ID, ID_1),
+   FOREIGN KEY(ID) REFERENCES Users(ID),
+   FOREIGN KEY(ID_1) REFERENCES Posts(ID)
+);
+
+CREATE TABLE Ajouter(
+   ID INT,
+   ID_1 INT,
+   PRIMARY KEY(ID, ID_1),
+   FOREIGN KEY(ID) REFERENCES Users(ID),
+   FOREIGN KEY(ID_1) REFERENCES Medias(ID)
+);
+
+CREATE TABLE Asso_7(
+   ID INT,
+   ID_1 INT,
+   PRIMARY KEY(ID, ID_1),
+   FOREIGN KEY(ID) REFERENCES Users(ID),
+   FOREIGN KEY(ID_1) REFERENCES Comments(ID)
+);
+
+CREATE TABLE Asso_13(
+   ID INT,
+   ID_1 INT,
+   PRIMARY KEY(ID, ID_1),
+   FOREIGN KEY(ID) REFERENCES Comments(ID),
+   FOREIGN KEY(ID_1) REFERENCES Comments(ID)
+);
