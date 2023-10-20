@@ -4,4 +4,4 @@ Thème : Restaurant
 
 Étudiants : Ilia choumitzky, Daniella Boaba, Jérémy Caron-Labalette, Matthis Poireau-Derre
 
-<img src="https://github.com/Poireau-DerreMatthis/challenge/blob/fea7915e45af41131cce896b10d5c7195886f97a/documentation/MCD.png" width="150" height="150">
+<img src="https://github.com/Poireau-DerreMatthis/challenge/blob/fea7915e45af41131cce896b10d5c7195886f97a/documentation/MCD.png" width="500" height="500">
